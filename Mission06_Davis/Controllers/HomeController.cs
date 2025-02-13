@@ -6,27 +6,37 @@ namespace Mission06_Davis.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private FilmCollectionContext _context;
+        public HomeController(FilmCollectionContext temp) //Constructor
         {
-            _logger = logger;
+            _context = temp;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult AboutJoel()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public IActionResult MovieForm()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+
+        [HttpPost]
+        public IActionResult MovieForm(Application response)
+        {
+            _context.Applications.Add(response); //Add record to database
+            _context.SaveChanges();
+
+            return View("Response", response);
+        }
+
+
+
     }
 }
