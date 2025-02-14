@@ -12,8 +12,8 @@
 @model Application
 
 <h1>Add a Movie!</h1>
-<div class="text-center">
-    <form method="post">
+<div>
+    <form method="post" class="d-inline-block border border-dark shadow p-5 mb-5 bg-white rounded">
         <label asp-for="Category">Category</label>
         <br />
         <input asp-for="Category"/>
@@ -39,7 +39,7 @@
         <select asp-for="Rating">
             <option value="G">G</option>
             <option value="PG">PG</option>
-            <option value="PG-13">PG-13</option>
+            <option value="PG-13" selected>PG-13</option>
             <option value="R">R</option>
         </select>
         <br />
@@ -48,7 +48,7 @@
         <br />
         <select asp-for="Edited">
             <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value="false" selected>No</option>
         </select>
         <br />
 
@@ -62,6 +62,6 @@
         <input asp-for="Notes" maxlength="25" />
         <br />
 
-        <button action="submit">Submit</button>
+        <button class="btn border border-dark bg-dark bg-opacity-25 rounded mt-2" action="submit">Submit</button>
     </form>
 </div>
