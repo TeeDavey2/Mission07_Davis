@@ -11,9 +11,8 @@ namespace Mission06_Davis.Models
         public int MovieId { get; set; }
 
         [ForeignKey("CategoryId")]
-        [Required(ErrorMessage ="Please select a category.")]
-        public int CategoryId { get; set; }
-        public CategoryModel Category { get; set; }
+        public int? CategoryId { get; set; }
+        public CategoryModel? Category { get; set; }
 
         [Required(ErrorMessage ="Please enter a title.")]
         public string Title { get; set; }

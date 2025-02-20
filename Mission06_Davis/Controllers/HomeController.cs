@@ -90,7 +90,7 @@ namespace Mission06_Davis.Controllers
             MovieModel recordToDelete = _context.Movies
                 .Single(x => x.MovieId == id);
 
-            return View(recordToDelete);
+            return View("Delete", recordToDelete);
         }
 
         [HttpPost]
