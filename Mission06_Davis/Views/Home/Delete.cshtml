@@ -7,7 +7,11 @@
 @model MovieModel
 
 <h2>Confirm Deletion</h2>
+
+@* Grabbing Movie Title *@
 <h3>@Model.Title</h3>
+
+@* Option Buttons *@
 <form method="post" asp-controller="Home" asp-action="Delete">
     <input type="hidden" asp-for="MovieId"/>
 

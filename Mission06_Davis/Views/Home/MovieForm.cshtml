@@ -18,6 +18,7 @@
         @* Input for a movie id *@
         <input type="hidden" asp-for="MovieId"/>
 
+        @* Dynamically display categories *@
         <label asp-for="CategoryId">Category</label>
         <br />
         <select asp-for="CategoryId">
@@ -29,6 +30,7 @@
         </select>
         <br />
 
+        @* Survey inputs *@
         <label asp-for="Title">Title</label>
         <br />
         <input asp-for="Title"/>
