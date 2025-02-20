@@ -9,14 +9,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 }
 
-@model Application
+@model MovieModel
 
 <h1>Add a Movie!</h1>
 <div>
     <form method="post" class="d-inline-block border border-dark shadow p-5 mb-5 bg-white rounded">
-        <label asp-for="Category">Category</label>
+
+        @* Input for a movie id *@
+        <input type="hidden" asp-for="MovieId"/>
+
+        <label asp-for="CategoryId">Category</label>
         <br />
-        <input asp-for="Category"/>
+        <select asp-for="CategoryId">
+            <option value="">Select a Category</option>
+            @foreach (CategoryModel c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
         <br />
 
         <label asp-for="Title">Title</label>
@@ -57,11 +67,21 @@
         <input asp-for="LentTo"/>
         <br />
 
+        <label asp-for="CopiedToPlex">CopiedToPlex</label>
+        <br />
+        <select asp-for="CopiedToPlex">
+            <option value="true">Yes</option>
+            <option value="false" selected>No</option>
+        </select>
+        <br />
+
         <label asp-for="Notes">Notes</label>
         <br />
         <input asp-for="Notes" maxlength="25" />
         <br />
 
         <button class="btn border border-dark bg-dark bg-opacity-25 rounded mt-2" action="submit">Submit</button>
+
+        <div class="text-danger" asp-validation-summary="All"></div>
     </form>
 </div>
